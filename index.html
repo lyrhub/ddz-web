@@ -31,6 +31,66 @@
                     </div>
                 </div>
                 <div id="status-msg" class="status-msg"></div>
+
+                <!-- 服务端部署说明 -->
+                <div class="server-guide">
+                    <h3>📡 如何部署游戏服务器</h3>
+                    <p>本页面是网页客户端，需要连接后端 WebSocket 服务器才能游戏。</p>
+                    <details>
+                        <summary>Docker 一键部署（推荐）</summary>
+                        <pre><code># 创建目录并下载配置
+mkdir ddz-server && cd ddz-server
+
+# 下载 docker-compose.yml
+curl -fsSL https://raw.githubusercontent.com/palemoky/fight-the-landlord/main/docker-compose.yml -o docker-compose.yml
+curl -fsSL https://raw.githubusercontent.com/palemoky/fight-the-landlord/main/.env.example -o .env
+
+# 启动服务（含 Redis + 游戏服务器 + DouZero AI）
+docker compose up -d
+
+# 服务器默认监听 9999 端口
+# WebSocket 地址: ws://你的服务器IP:9999/ws</code></pre>
+                    </details>
+                    <details>
+                        <summary>本地开发部署</summary>
+                        <pre><code># 1. 安装 Go 1.22+ 和 Redis
+# 2. 克隆项目
+git clone https://github.com/palemoky/fight-the-landlord.git
+cd fight-the-landlord
+
+# 3. 启动 Redis
+redis-server &
+
+# 4.（可选）启动 DouZero AI 机器人
+cd douzero && uv sync && uv run python server.py &
+
+# 5. 启动游戏服务器
+go run ./cmd/server
+
+# WebSocket 地址: ws://localhost:9999/ws</code></pre>
+                    </details>
+                    <details>
+                        <summary>配置说明</summary>
+                        <div class="config-info">
+                            <p><strong>.env 文件关键配置：</strong></p>
+                            <pre><code># 服务器端口
+SERVER_PORT=9999
+
+# Redis 地址
+REDIS_ADDR=redis:6379
+
+# 机器人（匹配不到真人时自动填充）
+BOT_ENABLED=true
+BOT_FILL_TIMEOUT=30
+
+# DouZero AI（更强的 AI 对手）
+BOT_DOUZERO_ENABLED=true
+BOT_DOUZERO_URL=http://douzero:2021</code></pre>
+                            <p>⚠️ 如果服务器有防火墙，需要开放 <code>9999</code> 端口。</p>
+                            <p>⚠️ 生产环境建议用 Nginx 反代并启用 WSS (WebSocket over TLS)。</p>
+                        </div>
+                    </details>
+                </div>
             </div>
         </div>
 

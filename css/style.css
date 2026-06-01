@@ -128,3 +128,43 @@ button:disabled { background: #555; cursor: not-allowed; }
     .card-small { width: 26px; height: 38px; font-size: 0.65rem; }
     .lobby-buttons { flex-direction: column; align-items: center; }
 }
+
+/* ===== Server Guide ===== */
+.server-guide {
+    margin-top: 40px;
+    padding: 24px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    border: 1px solid #2a4a3a;
+    text-align: left;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.server-guide h3 { margin-bottom: 8px; font-size: 1rem; }
+.server-guide > p { color: #aaa; font-size: 0.85rem; margin-bottom: 16px; }
+.server-guide details {
+    margin-bottom: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border: 1px solid #1a3a2a;
+}
+.server-guide summary {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #8f8;
+}
+.server-guide summary:hover { color: #aff; }
+.server-guide pre {
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    background: #0a1a10;
+    border-radius: 0 0 8px 8px;
+}
+.server-guide code { color: #cfc; font-family: 'Fira Code', 'Consolas', monospace; }
+.config-info { padding: 12px 14px; font-size: 0.82rem; }
+.config-info p { margin-bottom: 8px; color: #ccc; }
+.config-info pre { margin-bottom: 10px; }
