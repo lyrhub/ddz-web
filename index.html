@@ -88,6 +88,7 @@ BOT_DOUZERO_ENABLED=true
 BOT_DOUZERO_URL=http://douzero:2021</code></pre>
                             <p>⚠️ 如果服务器有防火墙，需要开放 <code>9999</code> 端口。</p>
                             <p>⚠️ 生产环境建议用 Nginx 反代并启用 WSS (WebSocket over TLS)。</p>
+                            <p>⚠️ <strong>本地玩注意：</strong>本页面通过 HTTPS 加载，浏览器会阻止连接非加密的 <code>ws://</code> 地址（混合内容策略）。本地游玩请克隆仓库后直接打开 <code>index.html</code> 文件，即可正常连接 <code>ws://localhost:9999/ws</code>。</p>
                         </div>
                     </details>
                 </div>
